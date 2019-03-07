@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 
 // Connect to Mongoose and set connection variable
-mongoose.connect(`mongodb+srv://AlexisCorbacho:12345asdfg@cluster0-vcq5j.mongodb.net/albums?retryWrites=true`)
+mongoose.connect(process.env.DRIVER_MONGODB)
 
 var db = mongoose.connection.once('open', function () {
     console.log("successfully connected to mongodb")
