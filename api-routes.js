@@ -20,8 +20,8 @@ router.route('/albums')
 router.route('/albums/bulk')
     .post(contactController.insertMany);
 
-// router.route('/contacts/:contact_id')
-//     .get(contactController.view)
+router.route('/contacts/:contact_id')
+    .get(contactController.view)
 //     .patch(contactController.update)
 //     .put(contactController.update)
 //     .delete(contactController.delete);

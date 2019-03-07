@@ -16,9 +16,6 @@ var albumSchema = mongoose.Schema({
     }
 });
 
-// Export Contact model
-module.exports = mongoose.model('albumModel', albumSchema, 'albumCollection');
 
-// module.exports.get = function (callback, limit) {
-//     Contact.find(callback).limit(limit);
-// }
+
+module.exports = mongoose.model('albumModel', albumSchema, 'albumCollection');

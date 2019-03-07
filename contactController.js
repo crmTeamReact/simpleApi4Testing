@@ -27,7 +27,7 @@ exports.new = function (req, res) {
 
     // save the contact and check for errors
     album.save(function (err, docs) {
-        //if (err) res.json(err);
+        if (err) res.json(err);
         res.json({
             message: 'New contact created!',
             data: docs
@@ -47,17 +47,17 @@ exports.insertMany = function (req, res) {
     });
 }
 
-// Handle view contact info
-// exports.view = function (req, res) {
-//     Contact.findById(req.params.contact_id, function (err, contact) {
-//         if (err)
-//             res.send(err);
-//         res.json({
-//             message: 'Contact details loading..',
-//             data: contact
-//         });
-//     });
-// };
+//Handle view contact info
+exports.view = function (req, res) {
+    Contact.findById(req.params.contact_id, function (err, contact) {
+        if (err)
+            res.send(err);
+        res.json({
+            message: 'Contact details loading..',
+            data: contact
+        });
+    });
+};
 
 // // Handle update contact info
 // exports.update = function (req, res) {
