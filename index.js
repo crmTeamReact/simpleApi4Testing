@@ -33,7 +33,7 @@ var db = mongoose.connection.once('open', function () {
 var port = process.env.PORT || 8080;
 
 // Send message for default URL
-app.get('/', (req, res) => res.send('Hello World with Express'));
+app.get('/', (req, res) => res.send('crmMay!!'));
 
 // Use Api routes in the App
 app.use('/api', apiRoutes)
