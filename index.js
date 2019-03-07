@@ -16,13 +16,13 @@ app.use(bodyParser.json());
 // Connect to Mongoose and set connection variable
 mongoose.connect(process.env.DRIVER_MONGODB)
 
-var db = mongoose.connection.once('open', function () {
+let db = mongoose.connection.once('open', function () {
     console.log("successfully connected to mongodb")
 }).on('error', function (error) {
     console.log("connection error:", error)
 })
 // Setup server port
-var port = process.env.PORT || 8080;
+let port = process.env.PORT || 8080;
 
 // Send message for default URL
 app.get('/', (req, res) => res.send('crmMay!!'));
