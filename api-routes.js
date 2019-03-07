@@ -18,7 +18,8 @@ router.route('/albums')
     .post(contactController.new);
 
 router.route('/albums/bulk')
-    .post(contactController.insertMany);
+    .post(contactController.insertMany)
+    .delete(contactController.deleteAll);
 
 router.route('/albums/:contact_id')
     .get(contactController.view)

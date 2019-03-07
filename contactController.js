@@ -93,3 +93,15 @@ exports.delete = function (req, res) {
         });
     });
 };
+
+// Handle delete contact
+exports.deleteAll = function (req, res) {
+    AlbumsModel.deleteOne({}, function (err, album) {
+        if (err) res.send(err);
+
+        res.json({
+            status: "success",
+            message: 'collection is empty',
+        });
+    });
+};
