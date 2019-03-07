@@ -49,12 +49,11 @@ exports.insertMany = function (req, res) {
 
 //Handle view contact info
 exports.view = function (req, res) {
-    Contact.findById(req.params.contact_id, function (err, contact) {
-        if (err)
-            res.send(err);
+    AlbumsModel.findById(req.params.contact_id, function (err, doc) {
+        if (err) res.send(err);
         res.json({
             message: 'Contact details loading..',
-            data: contact
+            data: doc
         });
     });
 };
