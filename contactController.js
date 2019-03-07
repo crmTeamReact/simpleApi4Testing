@@ -1,4 +1,4 @@
-// Import contact model
+// Import album model
 AlbumsModel = require('./contactModel');
 
 // Handle index actions
@@ -18,24 +18,24 @@ exports.index = function (req, res) {
     });
 };
 
-// Handle create contact actions
+// Handle create album actions
 exports.new = function (req, res) {
     let album = new AlbumsModel();
     album.userId = req.body.userId;
     album.id = req.body.id;
     album.title = req.body.title;
 
-    // save the contact and check for errors
-    album.save(function (err, docs) {
+    // save the album and check for errors
+    album.save(function (err, doc) {
         if (err) res.json(err);
         res.json({
-            message: 'New contact created!',
-            data: docs
+            message: 'New Album created!',
+            data: doc
         });
     });
 };
 
-//Handle create multiple contacts
+//Handle create multiple album
 exports.insertMany = function (req, res) {
     let arr = req.body;
     AlbumsModel.insertMany(arr, function (err, docs) {
@@ -47,52 +47,49 @@ exports.insertMany = function (req, res) {
     });
 }
 
-//Handle view contact info
+//Handle view album info
 exports.view = function (req, res) {
     AlbumsModel.findById(req.params.contact_id, function (err, doc) {
         if (err) res.send(err);
         res.json({
-            message: 'Contact details loading..',
+            message: 'Album details loading..',
             data: doc
         });
     });
 };
 
-// // Handle update contact info
-// exports.update = function (req, res) {
+// Handle update album info
+exports.update = function (req, res) {
 
-//     Contact.findById(req.params.contact_id, function (err, contact) {
-//         if (err)
-//             res.send(err);
+    AlbumsModel.findById(req.params.contact_id, function (err, album) {
+        if (err) res.send(err);
 
-//         contact.name = req.body.name ? req.body.name : contact.name;
-//         contact.gender = req.body.gender;
-//         contact.email = req.body.email;
-//         contact.phone = req.body.phone;
+        album.userId = req.body.userId || album.userId;
+        album.id = req.body.id || album.id
+        album.title = req.body.title || album.title;
 
-//         // save the contact and check for errors
-//         contact.save(function (err) {
-//             if (err)
-//                 res.json(err);
-//             res.json({
-//                 message: 'Contact Info updated',
-//                 data: contact
-//             });
-//         });
-//     });
-// };
+        // save the contact and check for errors
+        album.save(function (err, album) {
+            if (err) res.json(err);
+            res.json({
+                message: 'Album Info updated',
+                data: album
+            });
+        });
+    });
+};
 
-// // Handle delete contact
-// exports.delete = function (req, res) {
-//     Contact.remove({
-//         _id: req.params.contact_id
-//     }, function (err, contact) {
-//         if (err)
-//             res.send(err);
+// Handle delete contact
+exports.delete = function (req, res) {
+    AlbumsModel.deleteOne({
+        _id: req.params.contact_id
+    }, function (err, album) {
+        if (err) res.send(err);
 
-//         res.json({
-//             status: "success",
-//             message: 'Contact deleted'
-//         });
-//     });
-// };
+        res.json({
+            status: "success",
+            message: 'Album deleted',
+            album: album
+        });
+    });
+};

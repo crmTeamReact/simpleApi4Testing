@@ -20,11 +20,11 @@ router.route('/albums')
 router.route('/albums/bulk')
     .post(contactController.insertMany);
 
-router.route('/contacts/:contact_id')
+router.route('/albums/:contact_id')
     .get(contactController.view)
-//     .patch(contactController.update)
-//     .put(contactController.update)
-//     .delete(contactController.delete);
+    .put(contactController.update)
+    .patch(contactController.update)
+    .delete(contactController.delete);
 
 // Export API routes
 module.exports = router;
