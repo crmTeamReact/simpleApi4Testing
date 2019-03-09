@@ -1,7 +1,13 @@
 exports.auth = function (req, res) {
-    //check the user exists in db
-    //let token = req.header.authorization
+    const usercreds = new Buffer(
+            req.headers["authorization"].split(" ")[1],
+            'base64'
+        )
+        .toString('utf8')
+        .split(":")
+
     res.json({
-        hola: "hola"
+        user: usercreds[0],
+        password: usercreds[1]
     })
 }

@@ -3,16 +3,6 @@ const router = require('express').Router();
 const contactController = require('./contactController');
 const authController = require('./authController')
 
-// Set default API response
-// router.get('/', function (req, res) {
-//     res.json({
-//         status: 'API Its Working',
-//         message: 'Welcome to RESTHub crafted with love!',
-//     });
-// });
-
-// Import contact controller
-
 // Contact routes
 router.route('/auth/token')
     .get(authController.auth)
