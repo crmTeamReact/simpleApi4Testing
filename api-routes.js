@@ -13,6 +13,9 @@ let contactController = require('./contactController');
 // Import contact controller
 
 // Contact routes
+router.route('/auth/token')
+    .get(contactController.auth)
+
 router.route('/albums')
     .get(contactController.index)
     .post(contactController.new);
