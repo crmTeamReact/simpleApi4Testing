@@ -1,16 +1,9 @@
 // Import album model
 AlbumsModel = require('./contactModel');
 UsersModel = require('./userModel');
+auth = require('./authController');
 
 // Handle index actions
-exports.auth = function (req, res) {
-    //check the user exists in db
-    //let token = req.header.authorization
-    res.json({
-        hola: "hola"
-    })
-}
-
 exports.index = function (req, res) {
     AlbumsModel.find({}, function (err, albums) {
         if (err) {

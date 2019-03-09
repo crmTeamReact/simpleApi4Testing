@@ -1,6 +1,7 @@
 // Initialize express router
-let router = require('express').Router();
-let contactController = require('./contactController');
+const router = require('express').Router();
+const contactController = require('./contactController');
+const authController = require('./authController')
 
 // Set default API response
 // router.get('/', function (req, res) {
@@ -14,7 +15,7 @@ let contactController = require('./contactController');
 
 // Contact routes
 router.route('/auth/token')
-    .get(contactController.auth)
+    .get(authController.auth)
 
 router.route('/albums')
     .get(contactController.index)
