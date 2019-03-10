@@ -1,4 +1,5 @@
 const UserModel = require('./userModel')
+const jwt = require('jsonwebtoken')
 
 exports.auth = function (req, res) {
     if (req.headers["authorization"] == undefined) res.sendStatus(403)
@@ -11,7 +12,10 @@ exports.auth = function (req, res) {
         password: usercreds[1]
     }, function (err, user) {
         if (err || user.length == 0) res.sendStatus(403)
-        res.json({user})
+        jwt.sign({user}, 'secret_key', function(err, token){
+            res.json({token})
+
+        })
     })
     
 }
