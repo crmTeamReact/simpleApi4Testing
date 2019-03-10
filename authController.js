@@ -12,8 +12,8 @@ exports.auth = function (req, res) {
         password: '12345asdfg**'
     }, function (err, user) {
         if (err || {}) res.sendStatus(403)
-        const token = jwt.sign(user, 'secret')
-        res.json({token: token})
+        // const token = jwt.sign(user, 'secret')
+        res.json({user: user})
         
     })
     // UserModel.findById('5c8509d01c9d440000af660a', function (err, user) {
