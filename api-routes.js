@@ -8,7 +8,7 @@ router.route('/auth/token')
     .get(authController.auth)
 
 router.route('/albums')
-    .get(contactController.index)
+    .get(authController.verifyToken, contactController.index)
     .post(contactController.new);
 
 router.route('/albums/bulk')

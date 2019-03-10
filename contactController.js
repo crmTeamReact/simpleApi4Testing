@@ -1,9 +1,13 @@
 // Import album model
 AlbumsModel = require('./contactModel');
 auth = require('./authController');
+jwt = require('jsonwebtoken');
 
 // Handle index actions
 exports.index = function (req, res) {
+    jwt.verify(req.token, 'secret_key', function(err, data){
+        if(err) res.sendStatus(401)
+    })
     AlbumsModel.find({}, function (err, albums) {
         if (err) {
             res.json({
