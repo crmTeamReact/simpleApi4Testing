@@ -1,6 +1,5 @@
 // Import album model
 AlbumsModel = require('./contactModel');
-UsersModel = require('./userModel');
 auth = require('./authController');
 
 // Handle index actions
