@@ -1,4 +1,5 @@
 const UserModel = require('./userModel')
+const jwt = require('jsonwebtoken')
 
 exports.auth = function (req, res) {
     if (req.headers["authorization"] == undefined) res.sendStatus(403)
@@ -7,13 +8,13 @@ exports.auth = function (req, res) {
         .split(":")
 
     UserModel.find({
-        user: usercreds[0],
-        password: usercreds[1]
+        user: 'alexionieiote@hotmail.es',
+        password: '12345asdfg**'
     }, function (err, user) {
-        if (err) res.sendStatus(403)
-        res.json({
-            user
-        })
+        if (err || {}) res.sendStatus(403)
+        const token = jwt.sign(user, 'secret')
+        res.json(token)
+        
     })
     // UserModel.findById('5c8509d01c9d440000af660a', function (err, user) {
     //     if (err) res.send(err);
