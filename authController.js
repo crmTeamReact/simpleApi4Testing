@@ -8,8 +8,8 @@ exports.auth = function (req, res) {
         .split(":")
 
     AlbumsModel.find({
-        user: usercreds[0],
-        password: usercreds[1]
+        // user: usercreds[0],
+        // password: usercreds[1]
     }, function (err, user) {
         if (err) res.sendStatus(403)
         res.json({
