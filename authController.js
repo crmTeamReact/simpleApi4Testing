@@ -1,5 +1,4 @@
 const UserModel = require('./userModel')
-const AlbumsModel = require('./contactModel');
 
 exports.auth = function (req, res) {
     if (req.headers["authorization"] == undefined) res.sendStatus(403)
@@ -7,9 +6,9 @@ exports.auth = function (req, res) {
         .toString('utf8')
         .split(":")
 
-    AlbumsModel.find({
-        // user: usercreds[0],
-        // password: usercreds[1]
+    UserModel.find({
+        user: usercreds[0],
+        password: usercreds[1]
     }, function (err, user) {
         if (err) res.sendStatus(403)
         res.json({
