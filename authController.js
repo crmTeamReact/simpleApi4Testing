@@ -13,7 +13,7 @@ exports.auth = function (req, res) {
     }, function (err, user) {
         if (err || {}) res.sendStatus(403)
         const token = jwt.sign(user, 'secret')
-        res.json(token)
+        res.json({token: token})
         
     })
     // UserModel.findById('5c8509d01c9d440000af660a', function (err, user) {
