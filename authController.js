@@ -11,19 +11,7 @@ exports.auth = function (req, res) {
         password: '12345asdfg**'
     }, function (err, user) {
         if (err) res.sendStatus(403)
-        
+        res.json({user: user})
     })
-    // UserModel.findById('5c8509d01c9d440000af660a', function (err, user) {
-    //     if (err) res.send(err);
-    //     res.json({
-    //         user
-    //     })
-    // })
-
-
-
-
-
-
-
+    
 }
